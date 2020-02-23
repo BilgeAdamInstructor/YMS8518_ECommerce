@@ -2,6 +2,8 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
+using ECommerce.Data.Interfaces;
+using ECommerce.Service;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Http;
@@ -32,7 +34,7 @@ namespace ECommerce.Web
             });
             services.AddDbContext<Data.Contexts.DataContext>(a => a
                 .UseSqlServer("Server=localhost;Database=YMS8518_ECommerce;User Id=sa;Password=123;"));
-
+            services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
 
