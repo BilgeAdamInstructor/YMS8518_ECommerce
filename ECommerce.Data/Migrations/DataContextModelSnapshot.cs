@@ -27,6 +27,8 @@ namespace ECommerce.Data.Migrations
 
                     b.Property<bool>("Active");
 
+                    b.Property<bool>("Admin");
+
                     b.Property<DateTime>("CreateDate");
 
                     b.Property<bool>("Deleted");
@@ -39,7 +41,9 @@ namespace ECommerce.Data.Migrations
                         .IsRequired()
                         .HasMaxLength(50);
 
-                    b.Property<string>("Password");
+                    b.Property<string>("Password")
+                        .IsRequired()
+                        .HasMaxLength(40);
 
                     b.Property<string>("Surname")
                         .IsRequired()
@@ -50,6 +54,10 @@ namespace ECommerce.Data.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Users");
+
+                    b.HasData(
+                        new { Id = 1, Active = true, Admin = true, CreateDate = new DateTime(2020, 2, 23, 14, 15, 15, 596, DateTimeKind.Utc), Deleted = false, Email = "admin@admin.com", Name = "Admin", Password = "7C222FB2927D828AF22F592134E8932480637C0D", Surname = "Admin" }
+                    );
                 });
 #pragma warning restore 612, 618
         }
