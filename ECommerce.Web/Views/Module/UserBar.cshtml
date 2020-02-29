@@ -17,7 +17,7 @@
                 <span class="kt-badge kt-badge--username kt-badge--unified-success kt-badge--lg kt-badge--rounded kt-badge--bold kt-hidden">S</span>
             </div>
             <div class="kt-user-card__name">
-                Sean Stone
+                @Model.Name  @Model.Surname
             </div>
             <div class="kt-user-card__badge">
                 <span class="btn btn-label-primary btn-sm btn-bold btn-font-md">23 messages</span>
@@ -26,16 +26,16 @@
         <!--end: Head -->
         <!--begin: Navigation -->
         <div class="kt-notification">
-            <a href="custom/apps/user/profile-1/personal-information.html" class="kt-notification__item">
+            <a href="@Url.Action("Profile", "Account")" class="kt-notification__item">
                 <div class="kt-notification__item-icon">
                     <i class="flaticon2-calendar-3 kt-font-success"></i>
                 </div>
                 <div class="kt-notification__item-details">
                     <div class="kt-notification__item-title kt-font-bold">
-                        My Profile
+                        Hesabım
                     </div>
                     <div class="kt-notification__item-time">
-                        Account settings and more
+                        Hesap ayarları
                     </div>
                 </div>
             </a>
