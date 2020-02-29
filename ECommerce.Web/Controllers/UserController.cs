@@ -1,4 +1,5 @@
 ﻿using ECommerce.Data.Interfaces;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerce.Web.Controllers
@@ -25,11 +26,14 @@ namespace ECommerce.Web.Controllers
             }
 
             var user = _unitOfWork.UserRepository.GetByEmailAndPassword(user_LoginAction_Request.Email, user_LoginAction_Request.Password);
-            //TODO: buraya geleceğiz.
 
             if (user == null)
             {
                 return Unauthorized();
+            }
+            else
+            {
+                HttpContext.Session.SetInt32("UserId", user.Id);
             }
 
             return new JsonResult(user);

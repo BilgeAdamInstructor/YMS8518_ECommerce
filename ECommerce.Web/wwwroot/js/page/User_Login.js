@@ -20,8 +20,7 @@
         },
         Login_Callback: function (result) {
             window.location = "/";
-        }, 00
-            ,
+        },
         Login_Callback_Error: function (result) {
             alert("YAPTIĞIN AYIP");
         }
