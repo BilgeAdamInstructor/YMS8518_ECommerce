@@ -9,5 +9,7 @@ namespace ECommerce.Data.DTOs
 
         [Required, MinLength(8), MaxLength(64)]
         public string Password { get; set; }
+
+        public bool RememberMe { get; set; }
     }
 }

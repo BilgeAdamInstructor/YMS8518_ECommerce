@@ -3,8 +3,9 @@
         Login: function () {
             var email = $("#user-login-email").val();
             var password = $("#user-login-password").val();
+            var rememberMe = $("#user-login-rememberme").prop("checked");
 
-            var data = { Email: email, Password: password };
+            var data = { Email: email, Password: password, RememberMe: rememberMe };
 
             data = JSON.stringify(data);
 

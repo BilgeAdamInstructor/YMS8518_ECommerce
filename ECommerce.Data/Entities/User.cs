@@ -1,4 +1,5 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ECommerce.Data.Entities
 {
@@ -18,5 +19,7 @@ namespace ECommerce.Data.Entities
 
         [Required]
         public bool Admin { get; set; }
+
+        public Guid? AutoLoginKey { get; set; }
     }
 }

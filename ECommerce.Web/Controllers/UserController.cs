@@ -1,6 +1,7 @@
 ﻿using ECommerce.Data.Interfaces;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System;
 
 namespace ECommerce.Web.Controllers
 {
@@ -34,6 +35,17 @@ namespace ECommerce.Web.Controllers
             else
             {
                 HttpContext.Session.SetInt32("UserId", user.Id);
+
+                if (user_LoginAction_Request.RememberMe)
+                {
+                    //beni hatırla
+                    Guid guid = Guid.NewGuid();
+                    user.AutoLoginKey = guid;
+                    _unitOfWork.UserRepository.Update(user);
+                    _unitOfWork.Complete();
+
+                    HttpContext.Response.Cookies.Append("rememberme", guid.ToString());
+                }
             }
 
             return new JsonResult(user);
