@@ -1,4 +1,5 @@
 ﻿using ECommerce.Data.Entities;
+using System;
 using System.Linq;
 
 namespace ECommerce.Service
@@ -10,6 +11,11 @@ namespace ECommerce.Service
         public UserRepository(Data.Contexts.DataContext dataContext) : base(dataContext)
         {
             _dataContext = dataContext;
+        }
+
+        public User GetByAutoLoginKey(Guid autoLoginKey)
+        {
+            return _dataContext.Users.SingleOrDefault(a => a.AutoLoginKey == autoLoginKey);
         }
 
         public User GetByEmailAndPassword(string email, string password)
