@@ -38,5 +38,12 @@ namespace ECommerce.Web.Controllers
 
             return new JsonResult(user);
         }
+
+        public IActionResult LogoutAction()
+        {
+            HttpContext.Session.Remove("UserId");
+
+            return RedirectToAction("Index", "Home");
+        }
     }
 }
