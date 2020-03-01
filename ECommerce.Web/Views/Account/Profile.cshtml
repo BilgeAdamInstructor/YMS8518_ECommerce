@@ -89,7 +89,7 @@
                                     <i class="flaticon2-correct kt-font-success"></i>
                                 </a>
                                 <span class="kt-widget__subtitle">
-                                    Head of Development
+                                    @Model.Title.Name
                                 </span>
                             </div>
                             <div class="kt-widget__action">
@@ -99,20 +99,6 @@
                         </div>
                     </div>
                     <div class="kt-widget__body">
-                        <div class="kt-widget__content">
-                            <div class="kt-widget__info">
-                                <span class="kt-widget__label">Email:</span>
-                                <a href="#" class="kt-widget__data">matt@@fifestudios.com</a>
-                            </div>
-                            <div class="kt-widget__info">
-                                <span class="kt-widget__label">Phone:</span>
-                                <a href="#" class="kt-widget__data">44(76)34254578</a>
-                            </div>
-                            <div class="kt-widget__info">
-                                <span class="kt-widget__label">Location:</span>
-                                <span class="kt-widget__data">Melbourne</span>
-                            </div>
-                        </div>
                         <div class="kt-widget__items">
                             <a href="custom/apps/user/profile-1/overview.html" class="kt-widget__item ">
                                 <span class="kt-widget__section">
@@ -142,7 +128,7 @@
                                         </svg>
                                     </span>
                                     <span class="kt-widget__desc">
-                                        Personal Information
+                                        Kişisel Bilgileriniz
                                     </span>
                                 </span>
                             </a>
@@ -158,7 +144,7 @@
                                         </svg>
                                     </span>
                                     <span class="kt-widget__desc">
-                                        Account Information
+                                        Hesap Bilgileri
                                     </span>
                                     </spandiv>
                             </a>
@@ -335,58 +321,32 @@
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">First Name</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Adınız</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control" type="text" value="Nick">
+                                            <input class="form-control" type="text" value="@Model.Name" name="account-profile-name" id="account-profile-name">
                                         </div>
                                     </div>
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Last Name</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">Soyadınız</label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control" type="text" value="Bold">
+                                            <input class="form-control" type="text" value="@Model.Surname" name="account-profile-surname" id="account-profile-surname">
                                         </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Company Name</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <input class="form-control" type="text" value="Loop Inc.">
-                                            <span class="form-text text-muted">If you want your invoices addressed to a company. Leave blank to use your full name.</span>
-                                        </div>
-                                    </div>
+                                    </div>                                    
                                     <div class="row">
                                         <label class="col-xl-3"></label>
                                         <div class="col-lg-9 col-xl-6">
-                                            <h3 class="kt-section__title kt-section__title-sm">Contact Info:</h3>
+                                            <h3 class="kt-section__title kt-section__title-sm">İletişim Bilgileri:</h3>
                                         </div>
-                                    </div>
+                                    </div>                                    
                                     <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Contact Phone</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <div class="input-group">
-                                                <div class="input-group-prepend"><span class="input-group-text"><i class="la la-phone"></i></span></div>
-                                                <input type="text" class="form-control" value="+35278953712" placeholder="Phone" aria-describedby="basic-addon1">
-                                            </div>
-                                            <span class="form-text text-muted">We'll never share your email with anyone else.</span>
-                                        </div>
-                                    </div>
-                                    <div class="form-group row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Email Address</label>
+                                        <label class="col-xl-3 col-lg-3 col-form-label">E-Posta Adresi</label>
                                         <div class="col-lg-9 col-xl-6">
                                             <div class="input-group">
                                                 <div class="input-group-prepend"><span class="input-group-text"><i class="la la-at"></i></span></div>
-                                                <input type="text" class="form-control" value="nick.bold@@loop.com" placeholder="Email" aria-describedby="basic-addon1">
+                                                <input type="text" class="form-control" value="@Model.Email" placeholder="Email" aria-describedby="basic-addon1" name="account-profile-email" id="account-profile-email">
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="form-group form-group-last row">
-                                        <label class="col-xl-3 col-lg-3 col-form-label">Company Site</label>
-                                        <div class="col-lg-9 col-xl-6">
-                                            <div class="input-group">
-                                                <input type="text" class="form-control" placeholder="Username" value="loop">
-                                                <div class="input-group-append"><span class="input-group-text">.com</span></div>
-                                            </div>
-                                        </div>
-                                    </div>
+                                    </div>                                    
                                 </div>
                             </div>
                         </div>
@@ -396,8 +356,7 @@
                                     <div class="col-lg-3 col-xl-3">
                                     </div>
                                     <div class="col-lg-9 col-xl-9">
-                                        <button type="reset" class="btn btn-success">Submit</button>&nbsp;
-                                        <button type="reset" class="btn btn-secondary">Cancel</button>
+                                        <button type="button" class="btn btn-success" onclick="Account_Profile.Save();">Güncelle</button>&nbsp;
                                     </div>
                                 </div>
                             </div>
@@ -410,3 +369,4 @@
     <!--End:: App Content-->
 </div>
 <!--End::App-->
+<script src="~/js/page/Account_Profile.js?_dt=@DateTime.UtcNow.Ticks"></script>
