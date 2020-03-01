@@ -1,4 +1,5 @@
-﻿@{ 
+﻿@model ECommerce.Data.Entities.User
+@{ 
     Layout = "_Layout";
 }
 <!--Begin::App-->
@@ -84,7 +85,7 @@
                         <div class="kt-widget__content">
                             <div class="kt-widget__section">
                                 <a href="#" class="kt-widget__username">
-                                    Jason Muller
+                                    @Model.Name  @Model.Surname
                                     <i class="flaticon2-correct kt-font-success"></i>
                                 </a>
                                 <span class="kt-widget__subtitle">
