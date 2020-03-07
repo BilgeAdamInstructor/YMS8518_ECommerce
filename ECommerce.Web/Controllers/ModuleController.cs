@@ -27,5 +27,13 @@ namespace ECommerce.Web.Controllers
                 return Unauthorized();
             }
         }
+
+        public IActionResult AccountMenu()
+        {
+            int? userId = HttpContext.Session.GetInt32("UserId");
+            var user = _unitOfWork.UserRepository.GetById((int)userId);
+
+            return View(user);
+        }
     }
 }

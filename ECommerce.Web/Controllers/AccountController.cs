@@ -39,5 +39,10 @@ namespace ECommerce.Web.Controllers
 
             return new JsonResult(user);
         }
+
+        public IActionResult ChangePassword()
+        {
+            return View();
+        }
     }
 }
