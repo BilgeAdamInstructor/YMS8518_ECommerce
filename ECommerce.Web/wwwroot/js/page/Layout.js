@@ -1,5 +1,5 @@
 ﻿var Layout = {
     Init: function () {
-        Helper.Module.Init("UserBar");
+        Helper.Module.Auto();
     }
 };

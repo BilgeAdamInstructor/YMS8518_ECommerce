@@ -1,5 +1,14 @@
 ﻿var Helper = {
     Module: {
+        Auto: function() {
+            var modules = $("[id^=Module-]");
+            for (var i = 0; i < modules.length; i++) {
+                var module = modules[i];
+                var id = module.id;
+                var moduleName = id.replace("Module-", "");
+                Helper.Module.Init(moduleName);
+            }
+        },
         Init: function(name) {
             $.ajax({
                 ModuleName: name,
