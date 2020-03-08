@@ -144,9 +144,5 @@
     <!--End:: App Content-->
 </div>
 <!--End::App-->
-<script src="~/js/page/Account_Profile.js?_dt=@DateTime.UtcNow.Ticks"></script>
-<script>
-    $(document).ready(function () {
-        Account_Profile.Init();
-    });
-</script>
+
+@Html.Raw(ECommerce.Helper.ViewHelper.PageJavascript(ViewContext))
