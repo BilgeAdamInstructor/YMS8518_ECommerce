@@ -23,5 +23,17 @@
         Init_Callback: function (result) {
             $("#Module-" + this.ModuleName).html(result);
         }
+    },
+    UI: {
+        Alert: function(title, message, type) {
+            swal.fire({
+                title: title,
+                text: message,
+                type: type,
+                buttonsStyling: false,
+                confirmButtonText: "Tamam",
+                confirmButtonClass: "btn btn-brand"
+            });
+        }
     }
 };

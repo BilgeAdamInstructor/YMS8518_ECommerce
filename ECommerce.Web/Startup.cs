@@ -34,7 +34,7 @@ namespace ECommerce.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddDbContext<Data.Contexts.DataContext>(a => a
-                .UseSqlServer("Server=localhost;Database=YMS8518_ECommerce;User Id=sa;Password=123;"));
+                .UseSqlServer("Server=localhost;Database=YMS8518_ECommerce;Trusted_Connection=True;"));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
         }
