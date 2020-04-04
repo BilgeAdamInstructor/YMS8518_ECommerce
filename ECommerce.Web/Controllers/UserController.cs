@@ -35,6 +35,7 @@ namespace ECommerce.Web.Controllers
             else
             {
                 HttpContext.Session.SetInt32("UserId", user.Id);
+                HttpContext.Session.SetInt32("Admin", Convert.ToInt32(user.Admin));
 
                 if (user_LoginAction_Request.RememberMe)
                 {
@@ -57,6 +58,7 @@ namespace ECommerce.Web.Controllers
         public IActionResult LogoutAction()
         {
             HttpContext.Session.Remove("UserId");
+            HttpContext.Session.Remove("Admin");
             HttpContext.Response.Cookies.Delete("rememberme");
 
             return RedirectToAction("Index", "Home");

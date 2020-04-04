@@ -74,6 +74,7 @@ namespace ECommerce.Web
                                     if (user != null)
                                     {
                                         context.Session.SetInt32("UserId", user.Id);
+                                        context.Session.SetInt32("Admin", Convert.ToInt32(user.Admin));
                                     }
                                 }
                             }
