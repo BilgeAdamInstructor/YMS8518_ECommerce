@@ -129,34 +129,28 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <div class="kt-login__signup">
                             <div class="kt-login__head">
-                                <h3 class="kt-login__title">Sign Up</h3>
-                                <div class="kt-login__desc">Enter your details to create your account:</div>
+                                <h3 class="kt-login__title">Kullanıcı Kayıt</h3>
+                                <div class="kt-login__desc">Bilgilerinizi girerek üye olabilirsiniz:</div>
                             </div>
                             <form class="kt-login__form kt-form" action="">
                                 <div class="input-group">
-                                    <input class="form-control" type="text" placeholder="Fullname" name="fullname">
+                                    <input class="form-control" type="text" placeholder="İsminiz" id="user-register-name">
                                 </div>
                                 <div class="input-group">
-                                    <input class="form-control" type="text" placeholder="Email" name="email" autocomplete="off">
+                                    <input class="form-control" type="text" placeholder="Soyisiminiz" id="user-register-surname">
                                 </div>
                                 <div class="input-group">
-                                    <input class="form-control" type="password" placeholder="Password" name="password">
+                                    <input class="form-control" type="text" placeholder="Email" id="user-register-email" autocomplete="off">
                                 </div>
                                 <div class="input-group">
-                                    <input class="form-control" type="password" placeholder="Confirm Password" name="rpassword">
+                                    <input class="form-control" type="password" placeholder="Şifreniz" id="user-register-password">
                                 </div>
-                                <div class="row kt-login__extra">
-                                    <div class="col kt-align-left">
-                                        <label class="kt-checkbox">
-                                            <input type="checkbox" name="agree">I Agree the <a href="#" class="kt-link kt-login__link kt-font-bold">terms and conditions</a>.
-                                            <span></span>
-                                        </label>
-                                        <span class="form-text text-muted"></span>
-                                    </div>
+                                <div class="input-group">
+                                    <input class="form-control" type="password" placeholder="Şifrenizi tekrar yazın" id="user-register-password2">
                                 </div>
                                 <div class="kt-login__actions">
-                                    <button id="kt_login_signup_submit" class="btn btn-pill kt-login__btn-primary">Sign Up</button>&nbsp;&nbsp;
-                                    <button id="kt_login_signup_cancel" class="btn btn-pill kt-login__btn-secondary">Cancel</button>
+                                    <button class="btn btn-pill kt-login__btn-primary" type="button" onclick="User_Login.Register.Register();">Kayıt Ol</button>&nbsp;&nbsp;
+                                    <button id="kt_login_signup_cancel" class="btn btn-pill kt-login__btn-secondary">Geri Dön</button>
                                 </div>
                             </form>
                         </div>
@@ -177,9 +171,9 @@ License: You must have a valid license purchased only from themeforest(the above
                         </div>
                         <div class="kt-login__account">
                             <span class="kt-login__account-msg">
-                                Don't have an account yet ?
+                                Hesabınız yok mu?
                             </span>&nbsp;&nbsp;
-                            <a href="javascript:;" id="kt_login_signup" class="kt-link kt-link--light kt-login__account-link">Sign Up</a>
+                            <a href="javascript:;" id="kt_login_signup" class="kt-link kt-link--light kt-login__account-link">Kayıt Ol</a>
                         </div>
                     </div>
                 </div>

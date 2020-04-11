@@ -63,5 +63,13 @@ namespace ECommerce.Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+
+        public IActionResult RegisterAction()
+        {
+            //email veritabanında olmamalı
+            //model validation yapılmalı
+            //email onay (yarınki ders konusu)
+            return new JsonResult("??");
+        }
     }
 }

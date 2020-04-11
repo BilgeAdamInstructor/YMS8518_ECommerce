@@ -12,6 +12,7 @@ namespace ECommerce.Data.Contexts
 
         public DbSet<Entities.User> Users { get; set; }
         public DbSet<Entities.Title> Titles { get; set; }
+        public DbSet<Entities.OutgoingEmail> OutgoingEmails { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
