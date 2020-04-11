@@ -37,6 +37,7 @@ namespace ECommerce.Web
                 .UseSqlServer("Server=localhost;Database=YMS8518_ECommerce;Trusted_Connection=True;"));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
+            services.AddHostedService<Service.HostedServices.OutgoingEmailService>();
         }
 
         private static readonly object MiddlewareLock = new object();

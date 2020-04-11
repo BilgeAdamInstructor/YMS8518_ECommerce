@@ -35,5 +35,10 @@
                 confirmButtonClass: "btn btn-brand"
             });
         }
+    },
+    Validation: {
+        IsEmail: function(email) {
+            return /\S+@\S+\.\S+/.test(email);
+        }
     }
 };

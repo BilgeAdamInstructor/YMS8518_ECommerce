@@ -2,6 +2,8 @@
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using System;
+using System.Linq;
+using ECommerce.Data.Entities;
 
 namespace ECommerce.Web.Controllers
 {
@@ -64,12 +66,72 @@ namespace ECommerce.Web.Controllers
             return RedirectToAction("Index", "Home");
         }
 
-        public IActionResult RegisterAction()
+        public IActionResult RegisterAction([FromBody] Data.DTOs.User_RegisterAction_Request dto)
         {
-            //email veritabanında olmamalı
-            //model validation yapılmalı
-            //email onay (yarınki ders konusu)
-            return new JsonResult("??");
+            if (!ModelState.IsValid)
+            {
+                return BadRequest("pis bebe");
+            }
+
+            var user = _unitOfWork.UserRepository.Query().SingleOrDefault(a => a.Email == dto.Email);
+
+            if (user != null)
+            {
+                return BadRequest("E-posta adresi ile kayıtlı kullanıcı var.");
+            }
+
+            user = new User()
+            {
+                Active = true,
+                CreateDate = DateTime.UtcNow,
+                Email = dto.Email,
+                Name = dto.Name,
+                Password = Helper.CryptoHelper.Sha1(dto.Password),
+                Surname = dto.Surname,
+                TitleId = (int) Data.Enums.UserTitle.Customer
+            };
+
+            _unitOfWork.UserRepository.Insert(user);
+            
+            _unitOfWork.Complete();
+
+            string validationLink = "https://localhost:8080/email-verify/" +
+                                    user.Id + "/" + Helper.CryptoHelper.Sha1(user.Id.ToString()); 
+
+            _unitOfWork.OutgoingEmailRepository.Insert(new OutgoingEmail()
+            {
+                Active = true,
+                CreateDate = DateTime.UtcNow,
+                Subject = "Hoşgeldiniz, başlamak için bir adım kaldı!",
+                Body = "Onay linki içerir: <a href='" + validationLink + "'>onayla</a>" ,
+                To = user.Email
+            });
+
+            _unitOfWork.Complete();
+
+            return new JsonResult("OK");
+        }
+
+        [Route("/email-verify/{id:int}/{authKey}")]
+        public IActionResult VerifyEmail(int id, string authKey)
+        {
+            var authKeyChipper = Helper.CryptoHelper.Sha1(id.ToString());
+
+            if (authKey == authKeyChipper)
+            {
+                var user = _unitOfWork.UserRepository.GetById(id);
+                if (user != null)
+                {
+                    user.EmailVerified = true;
+                    _unitOfWork.Complete();
+                }
+            }
+            else
+            {
+                //başarısız
+            }
+
+            return View();
         }
     }
 }
