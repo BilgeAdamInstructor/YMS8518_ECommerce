@@ -12,13 +12,23 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
 
+
 namespace ECommerce.Web
 {
     public class Startup
     {
-        public Startup(IConfiguration configuration)
+        public Startup(IHostingEnvironment env)
         {
-            Configuration = configuration;
+            var builder = new ConfigurationBuilder()
+                .SetBasePath(AppContext.BaseDirectory)
+                .AddJsonFile("appsettings.json", true, true)
+                .AddJsonFile($"appsettings.{env.EnvironmentName}.json", true)
+                .AddEnvironmentVariables();
+            Configuration = builder.Build();
+
+            IConfigurationSection appSettingsSection = Configuration.GetSection("AppSettings");
+
+            Data.Singletons.AppSettingsDto.AppSetting = appSettingsSection.Get<Data.Singletons.AppSettingsDto.AppSettings>();
         }
 
         public IConfiguration Configuration { get; }
@@ -34,7 +44,7 @@ namespace ECommerce.Web
                 options.MinimumSameSitePolicy = SameSiteMode.None;
             });
             services.AddDbContext<Data.Contexts.DataContext>(a => a
-                .UseSqlServer("Server=localhost;Database=YMS8518_ECommerce;Trusted_Connection=True;"));
+                .UseSqlServer(Data.Singletons.AppSettingsDto.AppSetting.ConnectionString));
             services.AddScoped<IUnitOfWork, UnitOfWork>();
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
             services.AddHostedService<Service.HostedServices.OutgoingEmailService>();

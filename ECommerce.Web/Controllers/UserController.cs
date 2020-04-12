@@ -95,7 +95,7 @@ namespace ECommerce.Web.Controllers
             
             _unitOfWork.Complete();
 
-            string validationLink = "https://localhost:8080/email-verify/" +
+            string validationLink = Data.Singletons.AppSettingsDto.AppSetting.Website + "/email-verify/" +
                                     user.Id + "/" + Helper.CryptoHelper.Sha1(user.Id.ToString()); 
 
             _unitOfWork.OutgoingEmailRepository.Insert(new OutgoingEmail()

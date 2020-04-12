@@ -17,10 +17,10 @@ namespace ECommerce.Service.HostedServices
         private readonly IServiceScopeFactory _serviceScopeFactory;
         private readonly Helper.MailHelper.SMTP _smtp = new MailHelper.SMTP()
         {
-            Email = "test@enguzelyerler.com",
-            Password = "A123456!",
-            Server = "server.enguzelyerler.com",
-            Port = 587
+            Email = Data.Singletons.AppSettingsDto.AppSetting.SMTP.Email,
+            Password = Data.Singletons.AppSettingsDto.AppSetting.SMTP.Password,
+            Server = Data.Singletons.AppSettingsDto.AppSetting.SMTP.Server,
+            Port = Data.Singletons.AppSettingsDto.AppSetting.SMTP.Port
         };
 
         public OutgoingEmailService(IServiceScopeFactory serviceScopeFactory)
