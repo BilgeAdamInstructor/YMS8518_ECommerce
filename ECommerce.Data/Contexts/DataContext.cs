@@ -1,5 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using System;
+using System.Collections.Generic;
+using ECommerce.Data.Entities;
 
 namespace ECommerce.Data.Contexts
 {
@@ -13,6 +15,9 @@ namespace ECommerce.Data.Contexts
         public DbSet<Entities.User> Users { get; set; }
         public DbSet<Entities.Title> Titles { get; set; }
         public DbSet<Entities.OutgoingEmail> OutgoingEmails { get; set; }
+        public DbSet<Entities.Menu> Menus { get; set; }
+        public DbSet<Entities.Category> Categories { get; set; }
+        public DbSet<Entities.Product> Products { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -43,6 +48,19 @@ namespace ECommerce.Data.Contexts
                 Password = Helper.CryptoHelper.Sha1("12345678"),
                 TitleId = (int)Enum.UserTitle.Administrator,
                 EmailVerified = true
+            });
+            modelBuilder.Entity<Menu>().HasData(new List<Menu>()
+            {
+                new Menu()
+                {
+                    Id = 1,
+                    Name = "Header"
+                },
+                new Menu()
+                {
+                    Id = 2,
+                    Name = "Footer"
+                }
             });
         }
     }

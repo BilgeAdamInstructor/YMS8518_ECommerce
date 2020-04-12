@@ -1,5 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 
 namespace ECommerce.Data.Entities
@@ -11,6 +10,9 @@ namespace ECommerce.Data.Entities
         [ForeignKey("ParentId")]
         public virtual Category Parent { get; set; }
 
+        public int? MenuId { get; set; }
+        public virtual Menu Menu { get; set; }
+        
         public virtual ICollection<Category> Children { get; set; }
     }
 }
