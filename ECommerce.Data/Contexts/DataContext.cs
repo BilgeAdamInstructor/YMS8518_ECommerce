@@ -41,7 +41,8 @@ namespace ECommerce.Data.Contexts
                 Name = "Admin",
                 Surname = "Admin",
                 Password = Helper.CryptoHelper.Sha1("12345678"),
-                TitleId = (int)Enum.UserTitle.Administrator
+                TitleId = (int)Enum.UserTitle.Administrator,
+                EmailVerified = true
             });
         }
     }

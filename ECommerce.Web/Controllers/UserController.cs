@@ -34,7 +34,19 @@ namespace ECommerce.Web.Controllers
 
             if (user == null)
             {
-                return Unauthorized();
+                return BadRequest("E-posta veya şifre hatalı.");
+            }
+            else if (!user.EmailVerified)
+            {
+                return BadRequest("E-posta onayı sağlanmamış.");
+            }
+            else if (user.Deleted)
+            {
+                return BadRequest("Hesabınız kapatılmış.");
+            }
+            else if (!user.Active)
+            {
+                return BadRequest("Hesabınız dondurulmuş.");
             }
             else
             {

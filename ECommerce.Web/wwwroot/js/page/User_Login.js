@@ -6,6 +6,15 @@
             var password = $("#user-login-password").val();
             var rememberMe = $("#user-login-rememberme").prop("checked");
 
+            if (!email || !Helper.Validation.IsEmail(email)) {
+                Helper.UI.Alert("HATA", "E-posta adresiniz hatalı.", "error");
+                return;
+            }
+            else if (!password || password.length < 8 || password.length > 64) {
+                Helper.UI.Alert("HATA", "Şifreniz hatalı.", "error");
+                return;
+            }
+
             var data = { Email: email, Password: password, RememberMe: rememberMe };
 
             data = JSON.stringify(data);
@@ -24,7 +33,7 @@
             window.location = "/";
         },
         Login_Callback_Error: function (result) {
-            alert("YAPTIĞIN AYIP");
+            Helper.UI.Alert("HATA", result.responseText, "error");
         }
     },
     Register: {
