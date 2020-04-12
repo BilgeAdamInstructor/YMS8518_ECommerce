@@ -1,4 +1,4 @@
-﻿namespace ECommerce.Data.Enums
+﻿namespace ECommerce.Data.Enum
 {
     public enum OutgoingEmailState
     {

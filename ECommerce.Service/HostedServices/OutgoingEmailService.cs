@@ -3,7 +3,6 @@ using System.ComponentModel;
 using System.Linq;
 using System.Threading;
 using System.Threading.Tasks;
-using ECommerce.Data.Enums;
 using ECommerce.Data.Interfaces;
 using ECommerce.Helper;
 using Microsoft.Extensions.DependencyInjection;
@@ -48,8 +47,8 @@ namespace ECommerce.Service.HostedServices
                         var outgoingEmails = unitOfWork.OutgoingEmailRepository.Query().Where(a =>
                             a.Active &&
                             !a.Deleted &&
-                            (a.OutgoingEmailStateId == OutgoingEmailState.Pending ||
-                             (a.OutgoingEmailStateId == OutgoingEmailState.Fail && a.TryCount < 5)));
+                            (a.OutgoingEmailStateId == Data.Enum.OutgoingEmailState.Pending ||
+                             (a.OutgoingEmailStateId == Data.Enum.OutgoingEmailState.Fail && a.TryCount < 5)));
 
                         foreach (var outgoingEmail in outgoingEmails)
                         {
@@ -62,7 +61,7 @@ namespace ECommerce.Service.HostedServices
                             };
                             Helper.MailHelper.Send(SendCompletedCallback, _smtp, outgoingEmailDto);
                             outgoingEmail.TryCount++;
-                            outgoingEmail.OutgoingEmailStateId = OutgoingEmailState.Sending;
+                            outgoingEmail.OutgoingEmailStateId = Data.Enum.OutgoingEmailState.Sending;
                         }
 
                         unitOfWork.Complete();
@@ -86,17 +85,17 @@ namespace ECommerce.Service.HostedServices
                     if (e.Cancelled)
                     {
                         //mail gönderimi iptal edildi
-                        outgoingEmail.OutgoingEmailStateId = OutgoingEmailState.Fail;
+                        outgoingEmail.OutgoingEmailStateId = Data.Enum.OutgoingEmailState.Fail;
                     }
                     else if (e.Error != null)
                     {
                         //gönderim sırasında hata oluştu
-                        outgoingEmail.OutgoingEmailStateId = OutgoingEmailState.Fail;
+                        outgoingEmail.OutgoingEmailStateId = Data.Enum.OutgoingEmailState.Fail;
                     }
                     else
                     {
                         //mail başarıyla gönderildi
-                        outgoingEmail.OutgoingEmailStateId = OutgoingEmailState.Sent;
+                        outgoingEmail.OutgoingEmailStateId = Data.Enum.OutgoingEmailState.Sent;
                     }
 
                     unitOfWork.Complete();

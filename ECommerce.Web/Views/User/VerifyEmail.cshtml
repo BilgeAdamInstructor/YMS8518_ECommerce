@@ -1,5 +1,6 @@
-﻿@{
+﻿@model ECommerce.Data.DTO.Message_Response
+@{
     Layout = "_Layout";
 }
 
-Email onay sayfası
+@Html.Raw(ECommerce.Helper.ViewHelper.ExposeMessage(Model))

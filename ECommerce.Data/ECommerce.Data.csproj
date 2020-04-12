@@ -11,6 +11,7 @@
   </ItemGroup>
 
   <ItemGroup>
+    <ProjectReference Include="..\ECommerce.Data.Enum\ECommerce.Data.Enum.csproj" />
     <ProjectReference Include="..\ECommerce.Helper\ECommerce.Helper.csproj" />
   </ItemGroup>
 

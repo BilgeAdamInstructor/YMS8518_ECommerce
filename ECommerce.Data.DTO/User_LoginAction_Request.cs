@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace ECommerce.Data.DTOs
+namespace ECommerce.Data.DTO
 {
     public class User_LoginAction_Request
     {

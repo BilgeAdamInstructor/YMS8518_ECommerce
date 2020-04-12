@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.28307.572
+# Visual Studio Version 16
+VisualStudioVersion = 16.0.30002.166
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Web", "ECommerce.Web\ECommerce.Web.csproj", "{1F193AF6-6E14-43A7-B3FE-D8D42E5C7F65}"
 EndProject
@@ -9,7 +9,11 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Data", "ECommerce
 EndProject
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Service", "ECommerce.Service\ECommerce.Service.csproj", "{E6D132EC-E34B-4BFB-A0A2-2AB49428F581}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Helper", "ECommerce.Helper\ECommerce.Helper.csproj", "{0CBB7114-EE71-4C75-8AFF-B26A232146FA}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "ECommerce.Helper", "ECommerce.Helper\ECommerce.Helper.csproj", "{0CBB7114-EE71-4C75-8AFF-B26A232146FA}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Data.DTO", "ECommerce.Data.DTO\ECommerce.Data.DTO.csproj", "{C4151A13-9841-4FD2-8DE9-4169FFD8F46F}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ECommerce.Data.Enum", "ECommerce.Data.Enum\ECommerce.Data.Enum.csproj", "{16025B94-F503-4D8C-9B83-A4A3AB5E9486}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -33,6 +37,14 @@ Global
 		{0CBB7114-EE71-4C75-8AFF-B26A232146FA}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0CBB7114-EE71-4C75-8AFF-B26A232146FA}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0CBB7114-EE71-4C75-8AFF-B26A232146FA}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C4151A13-9841-4FD2-8DE9-4169FFD8F46F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C4151A13-9841-4FD2-8DE9-4169FFD8F46F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C4151A13-9841-4FD2-8DE9-4169FFD8F46F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C4151A13-9841-4FD2-8DE9-4169FFD8F46F}.Release|Any CPU.Build.0 = Release|Any CPU
+		{16025B94-F503-4D8C-9B83-A4A3AB5E9486}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{16025B94-F503-4D8C-9B83-A4A3AB5E9486}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{16025B94-F503-4D8C-9B83-A4A3AB5E9486}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{16025B94-F503-4D8C-9B83-A4A3AB5E9486}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
