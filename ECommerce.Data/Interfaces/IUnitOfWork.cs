@@ -6,6 +6,8 @@ namespace ECommerce.Data.Interfaces
     {
         IUserRepository UserRepository { get; set; }
         IOutgoingEmailRepository OutgoingEmailRepository { get; set; }
+        ICategoryRepository CategoryRepository { get; set; }
+        IMenuRepository MenuRepository { get; set; }
         int Complete();
     }
 }

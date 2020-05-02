@@ -1,0 +1,55 @@
+﻿@model int
+@{
+    Layout = "_Layout";
+}
+
+<!--begin::Portlet-->
+<div class="kt-portlet">
+    <div class="kt-portlet__head">
+        <div class="kt-portlet__head-label">
+            <h3 class="kt-portlet__head-title">
+                Textual HTML5 Inputs
+            </h3>
+        </div>
+    </div>
+
+    <!--begin::Form-->
+    <form class="kt-form kt-form--label-right">
+        <div class="kt-portlet__body">
+            <div class="form-group row">
+                <label for="category-manage-categoryname" class="col-2 col-form-label">Kategori Adı</label>
+                <div class="col-10">
+                    <input class="form-control" type="text" value="" id="category-manage-categoryname">
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="category-manage-menuid" class="col-2 col-form-label">Menü</label>
+                <div class="col-10">
+                    <select class="form-control" id="category-manage-menuid"></select>
+                </div>
+            </div>
+            <div class="form-group row">
+                <label for="category-manage-parentcategoryid" class="col-2 col-form-label">Ana Kategori</label>
+                <div class="col-10">
+                    <select class="form-control" id="category-manage-parentcategoryid"></select>
+                </div>
+            </div>
+        </div>
+        <div class="kt-portlet__foot">
+            <div class="kt-form__actions">
+                <div class="row">
+                    <div class="col-2">
+                    </div>
+                    <div class="col-10">
+                        <button type="button" class="btn btn-success" onclick="Category_Manage.Save();">Kaydet</button>
+                        <button type="button" class="btn btn-secondary">Geri Dön</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</div>
+
+<!--end::Portlet-->
+
+@Html.Raw(ECommerce.Helper.ViewHelper.PageJavascript(ViewContext, Model))

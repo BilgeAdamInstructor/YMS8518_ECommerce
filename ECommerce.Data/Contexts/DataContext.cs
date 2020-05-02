@@ -49,19 +49,18 @@ namespace ECommerce.Data.Contexts
                 TitleId = (int)Enum.UserTitle.Administrator,
                 EmailVerified = true
             });
-            modelBuilder.Entity<Menu>().HasData(new List<Menu>()
-            {
-                new Menu()
+            modelBuilder.Entity<Menu>().HasData(new Menu()
                 {
                     Id = 1,
                     Name = "Header"
-                },
-                new Menu()
+                }
+            );
+            modelBuilder.Entity<Menu>().HasData(new Menu()
                 {
                     Id = 2,
                     Name = "Footer"
                 }
-            });
+            );
         }
     }
 }
