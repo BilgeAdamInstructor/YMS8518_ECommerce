@@ -10,7 +10,8 @@ namespace ECommerce.Web.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
+        
+        [FilterContext.Log]
         [Route("/menu/getir")]
         public IActionResult Get()
         {

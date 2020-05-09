@@ -1,7 +1,4 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
 using ECommerce.Data.Interfaces;
 using ECommerce.Service;
 using Microsoft.AspNetCore.Builder;
@@ -37,6 +34,9 @@ namespace ECommerce.Web
         public void ConfigureServices(IServiceCollection services)
         {
             services.AddSession();
+            
+            services.AddSingleton<IHttpContextAccessor, HttpContextAccessor>();
+
             services.Configure<CookiePolicyOptions>(options =>
             {
                 // This lambda determines whether user consent for non-essential cookies is needed for a given request.
@@ -56,6 +56,8 @@ namespace ECommerce.Web
         public void Configure(IApplicationBuilder app, IHostingEnvironment env, IServiceScopeFactory serviceScopeFactory)
         {
             app.UseSession();
+            Helper.HttpContextHelper.Configure(app.ApplicationServices.GetRequiredService<IHttpContextAccessor>());
+            
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();

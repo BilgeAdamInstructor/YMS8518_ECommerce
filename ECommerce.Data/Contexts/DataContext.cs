@@ -18,6 +18,7 @@ namespace ECommerce.Data.Contexts
         public DbSet<Entities.Menu> Menus { get; set; }
         public DbSet<Entities.Category> Categories { get; set; }
         public DbSet<Entities.Product> Products { get; set; }
+        public DbSet<Entities.Log> Logs { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {

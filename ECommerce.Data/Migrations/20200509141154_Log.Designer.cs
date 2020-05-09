@@ -4,14 +4,16 @@ using ECommerce.Data.Contexts;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 namespace ECommerce.Data.Migrations
 {
     [DbContext(typeof(DataContext))]
-    partial class DataContextModelSnapshot : ModelSnapshot
+    [Migration("20200509141154_Log")]
+    partial class Log
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -48,41 +50,6 @@ namespace ECommerce.Data.Migrations
                     b.HasIndex("ParentId");
 
                     b.ToTable("Categories");
-                });
-
-            modelBuilder.Entity("ECommerce.Data.Entities.Log", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<string>("Action")
-                        .IsRequired()
-                        .HasMaxLength(150);
-
-                    b.Property<bool>("Active");
-
-                    b.Property<string>("Controller")
-                        .IsRequired()
-                        .HasMaxLength(150);
-
-                    b.Property<DateTime>("CreateDate");
-
-                    b.Property<bool>("Deleted");
-
-                    b.Property<string>("IpAddress")
-                        .IsRequired()
-                        .HasMaxLength(150);
-
-                    b.Property<DateTime?>("UpdateDate");
-
-                    b.Property<int?>("UserId");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("UserId");
-
-                    b.ToTable("Logs");
                 });
 
             modelBuilder.Entity("ECommerce.Data.Entities.Menu", b =>
@@ -238,8 +205,8 @@ namespace ECommerce.Data.Migrations
                     b.ToTable("Titles");
 
                     b.HasData(
-                        new { Id = 1, Active = true, CreateDate = new DateTime(2020, 5, 9, 14, 13, 21, 789, DateTimeKind.Utc), Deleted = false, Name = "Müşteri" },
-                        new { Id = 2, Active = true, CreateDate = new DateTime(2020, 5, 9, 14, 13, 21, 789, DateTimeKind.Utc), Deleted = false, Name = "Yönetici" }
+                        new { Id = 1, Active = true, CreateDate = new DateTime(2020, 5, 9, 14, 11, 54, 503, DateTimeKind.Utc), Deleted = false, Name = "Müşteri" },
+                        new { Id = 2, Active = true, CreateDate = new DateTime(2020, 5, 9, 14, 11, 54, 504, DateTimeKind.Utc), Deleted = false, Name = "Yönetici" }
                     );
                 });
 
@@ -288,7 +255,7 @@ namespace ECommerce.Data.Migrations
                     b.ToTable("Users");
 
                     b.HasData(
-                        new { Id = 1, Active = true, Admin = true, CreateDate = new DateTime(2020, 5, 9, 14, 13, 21, 789, DateTimeKind.Utc), Deleted = false, Email = "admin@admin.com", EmailVerified = true, Name = "Admin", Password = "7C222FB2927D828AF22F592134E8932480637C0D", Surname = "Admin", TitleId = 2 }
+                        new { Id = 1, Active = true, Admin = true, CreateDate = new DateTime(2020, 5, 9, 14, 11, 54, 504, DateTimeKind.Utc), Deleted = false, Email = "admin@admin.com", EmailVerified = true, Name = "Admin", Password = "7C222FB2927D828AF22F592134E8932480637C0D", Surname = "Admin", TitleId = 2 }
                     );
                 });
 
@@ -301,13 +268,6 @@ namespace ECommerce.Data.Migrations
                     b.HasOne("ECommerce.Data.Entities.Category", "Parent")
                         .WithMany("Children")
                         .HasForeignKey("ParentId");
-                });
-
-            modelBuilder.Entity("ECommerce.Data.Entities.Log", b =>
-                {
-                    b.HasOne("ECommerce.Data.Entities.User", "User")
-                        .WithMany()
-                        .HasForeignKey("UserId");
                 });
 
             modelBuilder.Entity("ECommerce.Data.Entities.Product", b =>

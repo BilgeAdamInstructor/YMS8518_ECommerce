@@ -14,13 +14,15 @@ namespace ECommerce.Web.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
+        
+        [FilterContext.Log]
         [Route("/yonetim/kategori/ekle/{id:int}")]
         public IActionResult Manage(int id)
         {
             return View(id);
         }
         
+        [FilterContext.Log]
         [Route("/kategori/getir/{id:int}")]
         public IActionResult Get(int id)
         {
@@ -29,6 +31,7 @@ namespace ECommerce.Web.Controllers
             return new JsonResult(category);
         }
         
+        [FilterContext.Log]
         [Route("/kategori/kaydet")]
         public IActionResult Save([FromBody] Data.DTO.Category_Save_Request dto)
         {
@@ -83,7 +86,8 @@ namespace ECommerce.Web.Controllers
 
             return new JsonResult(category);
         }
-
+        
+        [FilterContext.Log]
         [Route("/kategori/getir")]
         public IActionResult GetAll()
         {

@@ -13,13 +13,15 @@ namespace ECommerce.Web.Controllers
             _unitOfWork = unitOfWork;
         }
 
+        [FilterContext.Log]
         public IActionResult Profile()
         {
             int? userId = HttpContext.Session.GetInt32("UserId");
             var user = _unitOfWork.UserRepository.GetById((int)userId);
             return View(user);
         }
-
+        
+        [FilterContext.Log]
         public IActionResult ProfileSaveAction([FromBody]Data.DTO.Account_ProfileSaveAction_Request dto)
         {
             if (!ModelState.IsValid)
@@ -39,12 +41,14 @@ namespace ECommerce.Web.Controllers
 
             return new JsonResult(user);
         }
-
+        
+        [FilterContext.Log]
         public IActionResult ChangePassword()
         {
             return View();
         }
-
+        
+        [FilterContext.Log]
         public IActionResult ChangePasswordAction([FromBody] Data.DTO.Account_ChangePasswordAction_Request dto)
         {
             if (!ModelState.IsValid) return BadRequest("Kötü çocuk");

@@ -17,12 +17,14 @@ namespace ECommerce.Web.Controllers
         {
             _unitOfWork = unitOfWork;
         }
-
+        
+        [FilterContext.Log]
         public IActionResult Login()
         {
             return View();
         }
-
+        
+        [FilterContext.Log]
         public IActionResult LoginAction([FromBody]Data.DTO.User_LoginAction_Request user_LoginAction_Request)
         {
             if (!ModelState.IsValid)
@@ -70,7 +72,8 @@ namespace ECommerce.Web.Controllers
 
             return new JsonResult(user);
         }
-
+        
+        [FilterContext.Log]
         public IActionResult LogoutAction()
         {
             HttpContext.Session.Remove("UserId");
@@ -79,7 +82,8 @@ namespace ECommerce.Web.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-
+        
+        [FilterContext.Log]
         public IActionResult RegisterAction([FromBody] Data.DTO.User_RegisterAction_Request dto)
         {
             if (!ModelState.IsValid)
@@ -125,7 +129,8 @@ namespace ECommerce.Web.Controllers
 
             return new JsonResult("OK");
         }
-
+        
+        [FilterContext.Log]
         [Route("/email-verify/{id:int}/{authKey}")]
         public IActionResult VerifyEmail(int id, string authKey)
         {
